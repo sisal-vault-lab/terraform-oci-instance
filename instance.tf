@@ -29,7 +29,7 @@ resource "oci_core_instance" "instance" {
   create_vnic_details {
     subnetId = data.oci_core_subnet.primary.id
 
-    display_name = data.oci_core_subnet.display_name
+    display_name = data.oci_core_subnet.primary.display_name
     hostname_label = var.name
   }
 }
