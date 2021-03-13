@@ -1,51 +1,38 @@
-variable "OCI_TENANCY_ID" {
+variable "name" {
   type = string
-  description = "OCID of your tenancy."
-  
-  validation {
-    condition = split("..", var.OCI_TENANCY_ID)[0] == "ocid1.tenancy.oc1"
-    error_message = "Validation failed."
-  }
 }
 
-variable "OCI_USER_ID" {
+variable "availability_domain_ocid" {
   type = string
-  description = "OCID of the user calling the API."
-  
-  validation {
-    condition = split("..", var.OCI_USER_ID)[0] == "ocid1.user.oc1"
-    error_message = "Validation failed."
-  }
 }
 
-variable "OCI_PRIVATE_KEY" {
+variable "compartment_ocid" {
   type = string
-  description = "The contents of the private key file."
-  
-  sensitive = true
-  
-  validation {
-    condition = length(var.OCI_PRIVATE_KEY) >= 0
-    error_message = "Validation failed."
-  }
 }
 
-variable "OCI_KEY_FINGERPRINT" {
+variable "shape" {
   type = string
-  description = "Fingerprint for the key pair being used."
-  
-  validation {
-    condition = length(var.OCI_KEY_FINGERPRINT) >= 0
-    error_message = "Validation failed."
-  }
+  default = "VM.Standard.E3"
 }
 
-variable "OCI_REGION_NAME" {
+variable "cpu" {
+  type = number
+  default = 2
+}
+
+variable "memory" {
+  type = number
+  default = 4
+}
+
+variable "image_name" {
   type = string
-  description = "An Oracle Cloud Infrastructure region."
-  
-  validation {
-    condition = length(var.OCI_REGION_NAME) >= 0
-    error_message = "Validation failed."
-  }
+}
+
+variable "subnet_ocid" {
+  type = string
+}
+
+variable "public_key" {
+  type = string
 }
