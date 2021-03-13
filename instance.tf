@@ -27,7 +27,7 @@ resource "oci_core_instance" "instance" {
   preserve_boot_volume = false
 
   create_vnic_details {
-    subnetId = data.oci_core_subnet.primary.id
+    subnet_id = data.oci_core_subnet.primary.id
 
     display_name = data.oci_core_subnet.primary.display_name
     hostname_label = var.name
